@@ -5,13 +5,15 @@ import './App.css'
 import { GlobelState } from './contextAPI/GlobelState'
 import { contextReducer, contextState } from './contextAPI/Reducer'
 import Home from './pages/Home'
+import Products from './pages/Products'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <GlobelState initialState={contextState} reducer={contextReducer}>
-      <Home/>
+      {/* <Home/> */}
+      <Products/>
     </GlobelState>
   )
 }
