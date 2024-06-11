@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axiosConfig from '../utils/axiosFetch'
+import { Link } from 'react-router-dom'
 
 export default function Products() {
     const [products, setProducts] = useState([])
-    const [productsDetails, setProductsDetails] = useState(null)
     useEffect(() => {
         getProducts();
     }, [])
@@ -14,24 +14,15 @@ export default function Products() {
             alert('err')
         })
     }
-    const showProduct = (val) => {
-        axiosConfig.get(`/objects?id=${val}`).then(res => {
-            setProductsDetails(...res);
-        }).catch((err) => {
-            alert('err')
-        })
-    }
     return (
         <div>
-            {productsDetails!=null&&<div>
-                <p>{productsDetails.name}</p>
-                <p>{productsDetails?.data?.capacity}</p>
-                <p>{productsDetails?.data?.color}</p>
-            </div>}
+            
             {products.map((itm, i) => (
-                <div>
+                <div key={itm.id}>
                     <h4>{itm.name}</h4>
-                    <button onClick={() => showProduct(itm.id)}>Show Details</button>
+                    <Link to={`/products/${itm.id}`}>
+                    Show Details
+                    </Link>
                 </div>
             ))}
         </div>
