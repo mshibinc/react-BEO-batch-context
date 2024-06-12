@@ -17,9 +17,9 @@ export default function ProductDetails() {
         })
     }
     return (
-        <div>
+        <div className='container'>
             {isLoading ? <p>Loading....</p> : <>{productsDetails != null && <div>
-                <p>{productsDetails.name}</p>
+                <p className="product-names">{productsDetails.name}</p>
                 {productsDetails?.data?.capacity && <p>capacity:{productsDetails.data.capacity}</p>}
                 {productsDetails?.data?.color && <p>color:{productsDetails.data.color}</p>}
             </div>}</>}

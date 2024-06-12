@@ -14,7 +14,8 @@ axiosConfig.interceptors.request.use(async(config) => {
     return {
         ...config,
         headers: {
-            "Content-Type": "application/*",
+            'Content-Type': 'application/json',
+            // "Content-Type": "application/*",
             Authorization: `Bearer `,
             // Authorization: `Bearer ${token}`,
         },
