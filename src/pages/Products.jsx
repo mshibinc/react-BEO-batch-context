@@ -12,8 +12,14 @@ export default function Products() {
     const [capacity, setCapacity] = useState('')
     const [price, setprice] = useState('')
     const [products, setProducts] = useState([])
+    const [productDetails, setProductDetails] = useState({
+        name: '',
+        color: '',
+        capacity: '',
+        price: '',
+    })
     useEffect(() => {
-        // getProducts();
+        getProducts();
     }, [])
     const getProducts = () => {
         axiosConfig.get('/objects').then(res => {
@@ -27,17 +33,17 @@ export default function Products() {
         })
     }
     const addproduct = (e) => {
+        e.preventDefault();
         let productdata = {
             name: name,
             data: {
                 capacity: capacity,
-                price: price,
-                color: color
+                price,
+                color
             }
         }
         axiosConfig.post('/objects', productdata).then(res => {
-            console.log(res);
-            // setProducts({...products,res})
+            setProducts([...products, res])
         }).catch((err) => {
             console.log(err);
             // alert('err')
@@ -45,27 +51,32 @@ export default function Products() {
     }
     return (
         <div>
-            <Form >
+            <Form
+                onSubmit={addproduct}
+            >
                 <Row>
                     <Col lg="6">
                         <Form.Label>Product name</Form.Label>
-                        <Form.Control type="text" placeholder="Product name" onChange={(e)=>setname(e.target.value)} />
+                        <Form.Control type="text" placeholder="Product name" onChange={(e) => setname(e.target.value)} />
                     </Col>
                     <Col lg="6">
                         <Form.Label>Color</Form.Label>
-                        <Form.Control type="text" placeholder="Color" onChange={(e)=>setColor(e.target.value)}/>
+                        <Form.Control type="text" placeholder="Color" onChange={(e) => setColor(e.target.value)} />
                     </Col>
                     <Col lg="6">
                         <Form.Label>Capacity</Form.Label>
-                        <Form.Control type="text" placeholder="Capacity" onChange={(e)=>setCapacity(e.target.value)}/>
+                        <Form.Control type="text" placeholder="Capacity" onChange={(e) => setCapacity(e.target.value)} />
                     </Col>
                     <Col lg="6">
                         <Form.Label>Price</Form.Label>
-                        <Form.Control type="text" placeholder="Price" onChange={(e)=>setprice(e.target.value)}/>
+                        <Form.Control type="text" placeholder="Price" onChange={(e) => setprice(e.target.value)} />
                     </Col>
                 </Row>
                 <Col lg="6">
-                    <Button onClick={addproduct} variant="info" className='mt-4' >Add product</Button>
+                    <Button
+                        type='submit'
+                        // onClick={addproduct}
+                        variant="info" className='mt-4' >Add product</Button>
                 </Col>
 
 
