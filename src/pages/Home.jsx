@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 import {Helmet} from "react-helmet";
+import {  toast } from 'react-toastify';
 export default function Home() {
     const [{ users, place }, dispatch] = useStateValue();
     // console.log(users,place);
@@ -15,6 +16,19 @@ export default function Home() {
     }
     const adduserTo = () => {
         dispatch({ type: 'add', data: { name: 'Sonu', age: 12 } })
+    }
+    const testTost =()=>{
+        return toast('🦄 Wow so easy!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            // transition: Bounce,
+            });
     }
     return (
         <Wrapper>
@@ -34,7 +48,7 @@ export default function Home() {
                 <Usercard data={itm} key={i} />
             ))}
             <Container>
-
+            <Button name="Click me" type="success" onClick={testTost} /><br />
             </Container>
         </Wrapper>
     )

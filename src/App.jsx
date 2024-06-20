@@ -12,6 +12,8 @@ import Cart from './pages/cart/Cart';
 import FormikForm from './pages/formik/FormikForm';
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { theme } from './utils/theme';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const [count, setCount] = useState(0)
   const Global = createGlobalStyle`
@@ -31,6 +33,7 @@ function App() {
     <ThemeProvider theme={theme} >
       <Global />
       <GlobelState initialState={contextState} reducer={contextReducer}>
+      <ToastContainer />
         <BrowserRouter>
           <Routes>
             <Route path="/" >
