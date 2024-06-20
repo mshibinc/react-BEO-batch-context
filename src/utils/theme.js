@@ -5,5 +5,8 @@ export const theme = {
     p: '4px',
     textColor: '#000',
     infoBg: '#2f28abaa',
-    infoColor: '#fff'
+    infoColor: '#fff',
+    colorBackground: '#fafafa',
+    colorText: 'black',
+    fontFamily: "myfont"
 }

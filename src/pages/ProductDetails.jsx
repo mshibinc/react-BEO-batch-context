@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import axiosConfig from '../utils/axiosFetch';
+import {Helmet} from "react-helmet";
 export default function ProductDetails() {
     const { id } = useParams();
     const [productsDetails, setProductsDetails] = useState(null)
@@ -18,6 +19,10 @@ export default function ProductDetails() {
     }
     return (
         <div className='container'>
+              <Helmet>
+                <title>{productsDetails?.name}</title>
+                <meta name="description" content={`${productsDetails?.name} description description`} />
+            </Helmet>
             {isLoading ? <p>Loading....</p> : <>{productsDetails != null && <div>
                 <p className="product-names">{productsDetails.name}</p>
                 {productsDetails?.data?.capacity && <p>capacity:{productsDetails.data.capacity}</p>}

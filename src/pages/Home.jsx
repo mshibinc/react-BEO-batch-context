@@ -3,6 +3,7 @@ import { useStateValue } from '../contextAPI/GlobelState'
 import Button from '../components/Button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
+import {Helmet} from "react-helmet";
 export default function Home() {
     const [{ users, place }, dispatch] = useStateValue();
     // console.log(users,place);
@@ -17,6 +18,10 @@ export default function Home() {
     }
     return (
         <Wrapper>
+            <Helmet>
+                <title>My Home</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
             <h2 className='head-2'>Home</h2>
             <Para>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam laborum minima reiciendis quidem iusto quod magnam quas vitae. Ut porro repudiandae eligendi suscipit non similique numquam consequuntur est perspiciatis repellendus?</Para>
             <h3>My h3</h3>
@@ -60,8 +65,8 @@ const MyButton = styled(Button)`
     color: green;
     text-transform:uppercase;
 `
-const Container=styled.div`
-    background-color: ${p=>p.theme.infoBg};
+const Container = styled.div`
+    background-color: ${p => p.theme.infoBg};
     padding: 200px;
 `
 // `;

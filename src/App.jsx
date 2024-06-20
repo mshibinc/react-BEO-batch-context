@@ -14,9 +14,22 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { theme } from './utils/theme';
 function App() {
   const [count, setCount] = useState(0)
-
+  const Global = createGlobalStyle`
+  html {
+    font-family: ${(p) =>
+      p.theme
+        .fontFamily}, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+          "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+          sans-serif;
+  }
+  body {
+    background: ${(p) => p.theme.colorBackground};
+    color: ${(p) => p.theme.colorText};
+  }
+`;
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
+      <Global />
       <GlobelState initialState={contextState} reducer={contextReducer}>
         <BrowserRouter>
           <Routes>
