@@ -28,6 +28,9 @@ export default function Home() {
             {users.map((itm, i) => (
                 <Usercard data={itm} key={i} />
             ))}
+            <Container>
+
+            </Container>
         </Wrapper>
     )
 }
@@ -56,6 +59,10 @@ const MyButton = styled(Button)`
     text-decoration: none;
     color: green;
     text-transform:uppercase;
+`
+const Container=styled.div`
+    background-color: ${p=>p.theme.infoBg};
+    padding: 200px;
 `
 // `;
 // const Button = styled.button({
