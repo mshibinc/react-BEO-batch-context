@@ -14,6 +14,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { theme } from './utils/theme';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DropZone from './pages/DropZone';
 function App() {
   const [count, setCount] = useState(0)
   const Global = createGlobalStyle`
@@ -42,6 +43,7 @@ function App() {
               <Route path='products/:id' element={<ProductDetails />} />
               <Route path='cart' element={<Cart />} />
               <Route path='formik-form' element={<FormikForm />} />
+              <Route path='drop-zone' element={<DropZone />} />
 
             </Route>
           </Routes>

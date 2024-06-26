@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 import {Helmet} from "react-helmet";
 import {  toast } from 'react-toastify';
+
+  const OtherComponent = React.lazy(() => import('../components/Button.jsx'));
 export default function Home() {
     const [{ users, place }, dispatch] = useStateValue();
     // console.log(users,place);
@@ -30,6 +32,7 @@ export default function Home() {
             // transition: Bounce,
             });
     }
+  
     return (
         <Wrapper>
             <Helmet>
@@ -42,13 +45,13 @@ export default function Home() {
             <MyLink to="/products">products</MyLink>
             {/* <button onClick={adduserTo}>Add user</button><br/> */}
             {/* isInfo */}
-            <Button name="Add user" type="success" onClick={adduserTo} /><br />
+            <OtherComponent name="Add user" type="success" onClick={adduserTo} /><br />
             <MyButton name="MyButton" type="success" />
             {users.map((itm, i) => (
                 <Usercard data={itm} key={i} />
             ))}
             <Container>
-            <Button name="Click me" type="success" onClick={testTost} /><br />
+            {/* <Button name="Click me" type="success" onClick={testTost} /><br /> */}
             </Container>
         </Wrapper>
     )
